@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
     if (!user) return res.status(404).send({ message: "User does not exist" });
 
     // Boolian check for algo
-    const validPassword = bcrypt.compare(
+    const validPassword =await bcrypt.compare(
       req.body.password,
       convertToEng(user.password)
     );
