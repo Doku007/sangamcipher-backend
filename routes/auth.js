@@ -1,72 +1,8 @@
+const convertToTamil = require("../util/convertToTamil.js")
 const router = require("express").Router();
 const { User } = require("../models/Usermodel.js");
 const bcrypt = require("bcrypt");
 
-function convertToEng(input) {
-  // Replace letters according to the conversion mapping
-  var tamilConversion = input.replace(/./g, function (character) {
-    switch (character.toLowerCase()) {
-      case "க":
-        return "a";
-      case "ங":
-        return "b";
-      case "ச":
-        return "c";
-      case "ஞ":
-        return "d";
-      case "ட":
-        return "e";
-      case "ண":
-        return "f";
-      case "த":
-        return "g";
-      case "ந":
-        return "h";
-      case "ன":
-        return "i";
-      case "ப":
-        return "j";
-      case "ம":
-        return "k";
-      case "ய":
-        return "l";
-      case "ர":
-        return "m";
-      case "ற":
-        return "n";
-      case "ல":
-        return "o";
-      case "வ":
-        return "p";
-      case "ழ":
-        return "q";
-      case "வ":
-        return "r";
-      case "ழ":
-        return "s";
-      case "ள":
-        return "t";
-      case "ற":
-        return "u";
-      case "ன":
-        return "v";
-      case "உ":
-        return "w";
-      case "இ":
-        return "x";
-      case "ஆ":
-        return "y";
-      case "கு":
-        return "z";
-
-      // Add more character replacements as needed
-      default:
-        return character;
-    }
-  });
-
-  return tamilConversion;
-}
 
 router.post("/", async (req, res) => {
   try {
@@ -77,11 +13,13 @@ router.post("/", async (req, res) => {
     // Boolian check for algo
     console.log(req.body.password,user.password);
     const validPassword =await bcrypt.compare(
-      req.body.password,
-      convertToEng(user.password)
+      convertToTamil(req.body.password),
+      user.password
     );
+
     if (!validPassword)
       return res.status(401).send({ message: "Invalid Password" });
+     // return res.status(401).send({ message: "Invalid Password" });
 
     // console.log(user.username);
     res.status(200).send({
