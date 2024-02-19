@@ -50,13 +50,13 @@ function convertToEng(input) {
         return "u";
       case "ன":
         return "v";
-      case "கா":
+      case "உ":
         return "w";
-      case "ஙா":
+      case "இ":
         return "x";
-      case "சா":
+      case "ஆ":
         return "y";
-      case "ஞா":
+      case "கு":
         return "z";
 
       // Add more character replacements as needed

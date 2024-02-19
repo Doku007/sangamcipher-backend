@@ -51,13 +51,13 @@ const convertToTamil = (input) => {
       case "v":
         return "ன";
       case "w":
-        return "கா";
+        return "உ";
       case "x":
-        return "ஙா";
+        return "இ";
       case "y":
-        return "சா";
+        return "ஆ";
       case "z":
-        return "ஞா";
+        return "கு";
 
       // Add more character replacements as needed
       default:
